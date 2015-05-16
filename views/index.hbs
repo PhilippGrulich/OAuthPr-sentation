@@ -1,0 +1,133 @@
+<div class="jumbotron">
+    <h1>Super Cats</h1>
+    {{#if user.displayName}}
+        <p>Hi {{user.displayName}}</p>
+    {{/if}}
+</div>
+<div class="row">
+    <div id="wrapper">
+        <div id="columns">
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/1.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/2.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/3.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/4.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/5.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/6.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/7.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/8.jpg"/>
+            </div>
+
+            <div class="pin {{imageClass}}" >
+                <img src="images/cats/9.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/10.jpg"/>
+
+            </div>
+
+            <div class="pin">
+                <img src="images/cats/11.jpg"/>
+
+            </div>
+
+            <div class="pin">
+                <img src="images/cats/12.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/13.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/14.jpg"/>
+
+            </div>
+
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/15.jpg"/>
+
+            </div>
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/16.jpg"/>
+
+            </div>
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/17.jpg"/>
+
+            </div>
+            <div class="pin {{imageClass}}" >
+                <img src="images/cats/18.jpg"/>
+
+            </div>
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/19.jpg"/>
+
+            </div>
+            <div class="pin {{imageClass}}">
+                <img src="images/cats/20.jpg"/>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{#unless user.displayName}}
+<div id="myModal" class="modal  bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="mySmallModalLabel">Bitte erst anmelden<a class="anchorjs-link"
+                                                                                     href="#mySmallModalLabel"><span
+                        class="anchorjs-icon"></span></a></h4>
+            </div>
+            <div class="modal-body">
+                <a href="/auth/facebook"><img src="images/fb-btn.png"></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <script>
+        window.onload = function () {
+            $('#myModal').modal({
+                show: true
+            })
+        }
+
+    </script>
+{{/unless}}

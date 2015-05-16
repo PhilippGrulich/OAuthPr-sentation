@@ -1,0 +1,105 @@
+<div class="row">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>accessToken</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each users}}
+            <tr>
+                <td>{{this.profile.displayName}}</td>
+                <td>
+                    <span>
+                       <button type="button" token="{{this.accessToken}}" class="btn btn-default select">Use</button>
+                    </span>
+
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+
+    </table>
+</div>
+
+
+<div  class="row">
+    <input class="form-control" id="token">
+    <div class="col-md-4">
+
+        <div class="btn-group-vertical">
+
+            <button type="button" class="btn btn-default me">User Info</button>
+            <button type="button" class="btn btn-default post">Posts</button>
+            <button type="button" class="btn btn-default fotos">Fotos</button>
+            <button type="button" class="btn btn-default messages">Messages</button>
+        </div>
+
+
+    </div>
+    <div class="col-md-8 output" id="json">
+
+
+    </div>
+
+</div>
+
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1074931799203263',
+            xfbml: true,
+            version: 'v2.3'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    window.onload = function () {
+        $(".select").click(function(event){
+            var token =  $(this).attr("token");
+            $("#token").val(token);
+        });
+
+        $(".me").click(function(event){
+            sendFacebookRequest("me/")
+        });
+
+
+
+        $(".fotos").click(function(event){
+            sendFacebookRequest("me/photos")
+        });
+        $(".post").click(function(event){
+            sendFacebookRequest("me/feed")
+        });
+        $(".messages").click(function(event){
+            sendFacebookRequest("me/inbox/")
+        });
+
+        var sendFacebookRequest = function(path){
+            var token =  $(this).attr("token");
+            FB.api(
+                    path,
+                    'get',
+                    {
+                        access_token :  $("#token").val(),
+                        additional_parameter_foo : 'bar'
+                    },function(result){
+                        $("#json").JSONView(result);
+                    }
+            );
+        }
+    }
+
+</script>
