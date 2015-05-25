@@ -39,7 +39,7 @@ passport.use(new FacebookStrategy({
             // represent the logged-in user.  In a typical application, you would want
             // to associate the Facebook account with a user record in your database,
             // and return that user instead.
-            return done(null, profile);
+            return done(null, {accessToken:accessToken,user:profile});
         });
 
     }
@@ -69,7 +69,7 @@ app.get('/auth/facebook',
 );
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-        successRedirect: '/',
+        successRedirect: '/shop',
         failureRedirect: '/'
     }));
 
